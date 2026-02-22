@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>معدتك - تأجير المعدات الثقيلة والأدوات</title>
+  <meta name="description" content="تطبيق معدتك - استأجر معدات البناء والمعدات الثقيلة بسهولة من هاتفك">
+  <!-- Fonts: Cairo (Arabic) + Inter (UI/numbers) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Prevent theme flash -->
+  <script>
+    (function () {
+      var t = localStorage.getItem('maedatk-theme');
+      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    })();
+  </script>
+</head>
+
+<body>
+  <!-- ========== Navigation ========== -->
+  <header class="nav" id="nav">
+    <div class="nav__container">
+      <a href="#" class="nav__logo">
+        <img src="img/logo.png" alt="معدتك - المنصة الأولى لتأجير المعدات" class="nav__logo-img">
+        <span>معدتك</span>
+      </a>
+      <button class="nav__toggle" id="navToggle" aria-label="فتح القائمة">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="nav__links" id="navLinks">
+        <a href="#hero">الرئيسية</a>
+        <a href="#benefits">المميزات</a>
+        <a href="#how-it-works">كيف يعمل</a>
+        <a href="#app-screens">التطبيق</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي/النهاري">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== Hero Section ========== -->
+  <section class="hero" id="hero">
+    <!-- Three.js cinematic 3D background canvas -->
+    <canvas id="hero3d" class="hero__canvas" aria-hidden="true"></canvas>
+    <!-- Gradient overlay so text stays readable -->
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <div class="hero__container">
+
+      <!-- ── Content side ── -->
+      <div class="hero__content" data-aos="fade-left" data-aos-duration="1000">
+        <div class="hero__tag" data-aos="fade-down" data-aos-delay="200">
+          <i class="fas fa-certificate"></i>
+          <span>المنصة الأولى لتأجير المعدات في المملكة</span>
+        </div>
+        <h1 class="hero__title">
+          استأجر <span>معداتك</span> بكل ثقة<br>وأنجز مشاريعك بذكاء
+        </h1>
+        <p class="hero__subtitle">
+          نوفر لك أسطولاً متكاملاً من المعدات الثقيلة والأدوات الاحترافية مع خدمة توصيل ذكية ودعم فني على مدار الساعة.
+        </p>
+        <div class="hero__cta">
+          <a href="#cta-banner" class="btn btn--primary btn--premium">
+            <i class="fas fa-download"></i>
+            تحميل التطبيق
+          </a>
+        </div>
+
+        <div class="hero__info-bar" data-aos="fade-up" data-aos-delay="400">
+          <div class="info-item">
+            <span class="info-item__val">500+</span>
+            <span class="info-item__lab">معدة متاحة</span>
+          </div>
+          <div class="info-item__spacer"></div>
+          <div class="info-item">
+            <span class="info-item__val">15+</span>
+            <span class="info-item__lab">مدينة مغطاة</span>
+          </div>
+          <div class="info-item__spacer"></div>
+          <div class="info-item">
+            <span class="info-item__val">4.9/5</span>
+            <span class="info-item__lab">تقييم العملاء</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 3D Phone side ── -->
+      <div class="hero__visual" data-aos="fade-right" data-aos-duration="900" data-aos-delay="300">
+        <!-- Ambient glow behind phone -->
+        <div class="phone-glow" aria-hidden="true"></div>
+
+        <div class="phone-mockup phone-mockup--3d">
+          <div class="phone-mockup__shell">
+            <!-- Side buttons -->
+            <div class="phone-mockup__btn phone-mockup__btn--vol-up"></div>
+            <div class="phone-mockup__btn phone-mockup__btn--vol-down"></div>
+            <div class="phone-mockup__btn phone-mockup__btn--power"></div>
+            <div class="phone-mockup__frame">
+              <!-- Notch -->
+              <div class="phone-mockup__notch">
+                <div class="phone-mockup__speaker"></div>
+                <div class="phone-mockup__camera"></div>
+              </div>
+              <!-- Real app screenshot -->
+              <div class="phone-mockup__screen">
+                <img src="img/home.png" alt="الشاشة الرئيسية للتطبيق" class="phone-screen-img">
+              </div>
+              <!-- Home bar -->
+              <div class="phone-mockup__bar"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating notification badges -->
+        <div class="phone-badge phone-badge--rating">
+          <i class="fas fa-star"></i>
+          <div>
+            <strong>4.9</strong>
+            <span>تقييم التطبيق</span>
+          </div>
+        </div>
+        <div class="phone-badge phone-badge--booked">
+          <i class="fas fa-check-circle"></i>
+          <div>
+            <strong>تم الحجز!</strong>
+            <span>حفّار هيدروليكي</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="hero__scroll" aria-hidden="true">
+      <div class="hero__scroll-mouse">
+        <div class="hero__scroll-dot"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories section removed per user request -->
+
+
+  <!-- ========== Why Choose Us ========== -->
+  <section class="benefits" id="benefits">
+    <div class="section__container">
+      <div class="section__header" data-aos="fade-up">
+        <span class="section__tag">لماذا نحن؟</span>
+        <h2 class="section__title">لماذا يختار المحترفون <span class="u-text-primary">معدتك</span>؟</h2>
+        <p class="section__subtitle">نحن لا نوفر فقط المعدات، بل نوفر راحة البال والدعم الكامل لضمان نجاح مشروعك.</p>
+      </div>
+
+      <div class="benefits__grid">
+        <!-- Card 1 -->
+        <article class="benefit-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="benefit-card__icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>معدات مؤمنة وصيانة</h3>
+          <p>جميع معداتنا تخضع لفحص دوري دقيق لضمان أعلى مستويات الأداء والأمان في موقع العمل.</p>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="benefit-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="benefit-card__icon"><i class="fas fa-shipping-fast"></i></div>
+          <h3>توصيل جيو-ذكي</h3>
+          <p>نصل إليك في موقع العمل عبر نظام تتبع وبحث ذكي يضمن أسرع وقت استجابة وتوصيل.</p>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="benefit-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="benefit-card__icon"><i class="fas fa-headset"></i></div>
+          <h3>دعم فني متكامل</h3>
+          <p>فريقنا المتخصص معك في أي وقت لحل أي مشكلة تقنية أو فنية بشكل فوري ومباشر.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== How It Works ========== -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="section__container">
+      <div class="section__header" data-aos="fade-up">
+        <span class="section__tag">الخطوات</span>
+        <h2 class="section__title">كيف يعمل التطبيق</h2>
+        <p class="section__subtitle">ثلاث خطوات بسيطة لبدء العمل بأفضل المعدات</p>
+      </div>
+      <div class="steps">
+        <div class="step" data-aos="fade-up" data-aos-delay="0">
+          <div class="step__number">1</div>
+          <div class="step__icon"><i class="fas fa-search-location"></i></div>
+          <h3 class="step__title">ابحث واطلب</h3>
+          <p class="step__text">حدد موقعك ونوع المعدة المطلوبة من الخريطة التفاعلية</p>
+        </div>
+        <div class="step" data-aos="fade-up" data-aos-delay="150">
+          <div class="step__number">2</div>
+          <div class="step__icon"><i class="fas fa-hand-holding-usd"></i></div>
+          <h3 class="step__title">حدد الوقت والسعر</h3>
+          <p class="step__text">اتفق على مدة الاستئجار والتكلفة المناسبة لميزانيتك</p>
+        </div>
+        <div class="step" data-aos="fade-up" data-aos-delay="300">
+          <div class="step__number">3</div>
+          <div class="step__icon"><i class="fas fa-map-marked-alt"></i></div>
+          <h3 class="step__title">تتبع التوصيل</h3>
+          <p class="step__text">تابع وصول المعدة لموقعك في الوقت الفعلي وابدأ العمل</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== App Screens Showcase ========== -->
+  <section class="app-screens" id="app-screens">
+    <div class="section__container">
+      <div class="section__header" data-aos="fade-up">
+        <span class="section__tag">واجهة المستخدم</span>
+        <h2 class="section__title">اكتشف واجهة التطبيق</h2>
+        <p class="section__subtitle">تجربة رقمية عصرية مصممة لتناسب احتياجاتكم</p>
+      </div>
+      <div class="screens-swiper swiper">
+        <div class="swiper-wrapper">
+          <!-- Slide Set 1 -->
+          <div class="swiper-slide screen-card">
+            <div class="screen-card__device"><img src="img/home.png" class="screen-img"></div>
+          </div>
+          <div class="swiper-slide screen-card">
+            <div class="screen-card__device"><img src="img/search truck.png" class="screen-img"></div>
+          </div>
+          <div class="swiper-slide screen-card">
+            <div class="screen-card__device"><img src="img/Set time and price.png" class="screen-img"></div>
+          </div>
+          <div class="swiper-slide screen-card">
+            <div class="screen-card__device"><img src="img/In-Progress.png" class="screen-img"></div>
+          </div>
+          <div class="swiper-slide screen-card">
+            <div class="screen-card__device"><img src="img/Sign in.png" class="screen-img"></div>
+          </div>
+          <div class="swiper-slide screen-card">
+            <div class="screen-card__device"><img src="img/On Boarding 1.png" class="screen-img"></div>
+          </div>
+
+          <!-- Slide Set 2 (Duplicates for smooth loop) -->
+          <div class="swiper-slide screen-card">
+            <div class="screen-card__device"><img src="img/home.png" class="screen-img"></div>
+          </div>
+          <div class="swiper-slide screen-card">
+            <div class="screen-card__device"><img src="img/search truck.png" class="screen-img"></div>
+          </div>
+          <div class="swiper-slide screen-card">
+            <div class="screen-card__device"><img src="img/Set time and price.png" class="screen-img"></div>
+          </div>
+          <div class="swiper-slide screen-card">
+            <div class="screen-card__device"><img src="img/In-Progress.png" class="screen-img"></div>
+          </div>
+          <div class="swiper-slide screen-card">
+            <div class="screen-card__device"><img src="img/Sign in.png" class="screen-img"></div>
+          </div>
+          <div class="swiper-slide screen-card">
+            <div class="screen-card__device"><img src="img/On Boarding 1.png" class="screen-img"></div>
+          </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA Section ========== -->
+  <section class="cta-banner" id="cta-banner" data-aos="fade-up">
+    <div class="section__container">
+      <div class="cta-banner__box">
+        <div class="cta-banner__content">
+          <h2 class="cta-banner__title">جاهز لبدء مشروعك القادم؟</h2>
+          <p class="cta-banner__text">حمل تطبيق معدتك الآن واستمتع بتجربة استئجار معدات لا مثيل لها بأسعار تنافسية ودعم
+            فني متكامل.</p>
+          <div class="cta-banner__buttons">
+            <a href="#" class="btn btn--white"><i class="fab fa-apple"></i> App Store</a>
+            <a href="#" class="btn btn--white-outline"><i class="fab fa-google-play"></i> Google Play</a>
+          </div>
+        </div>
+        <div class="cta-banner__image">
+          <img src="img/home.png" alt="التطبيق" class="cta-banner__img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Book Equipment Modal (open via #book-equipment or .js-open-book-modal) ========== -->
+  <div id="book-equipment" class="u-anchor"></div>
+  <div class="modal" id="bookModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal__backdrop" id="modalBackdrop"></div>
+    <div class="modal__box" id="modalBox">
+      <button class="modal__close" id="modalClose" aria-label="إغلاق"><i class="fas fa-times"></i></button>
+      <h2 class="modal__title" id="modalTitle">احجز معداتك</h2>
+      <p class="modal__subtitle">اختر نوع المعدة وتاريخ الاستئجار وسنتواصل معك</p>
+      <form class="book-form" id="bookForm" novalidate>
+        <div class="book-form__group">
+          <label class="book-form__label" for="bookEquipName">اسم المعدة المطلوبة</label>
+          <input type="text" class="book-form__input" id="bookEquipName" name="equipment"
+            placeholder="مثلاً: حفّار هيدروليكي، مولد 100 كيلو..." required>
+        </div>
+        <div class="book-form__row">
+          <div class="book-form__group">
+            <label class="book-form__label" for="bookStart">من تاريخ</label>
+            <input type="date" class="book-form__input" id="bookStart" name="start" required>
+          </div>
+          <div class="book-form__group">
+            <label class="book-form__label" for="bookEnd">إلى تاريخ</label>
+            <input type="date" class="book-form__input" id="bookEnd" name="end" required>
+          </div>
+        </div>
+        <div class="book-form__group">
+          <label class="book-form__label" for="bookPhone">رقم الجوال</label>
+          <input type="tel" class="book-form__input" id="bookPhone" name="phone" placeholder="05xxxxxxxx" required>
+        </div>
+        <div class="book-form__group">
+          <label class="book-form__label" for="bookNotes">ملاحظات (اختياري)</label>
+          <textarea class="book-form__input book-form__input--area" id="bookNotes" name="notes" rows="3"
+            placeholder="تفاصيل المشروع أو الموقع..."></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary btn--premium btn--full">
+          <i class="fas fa-check-circle"></i>
+          تأكيد الحجز
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== Footer ========== -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <a href="#" class="footer__logo">
+          <img src="img/logo.png" alt="معدتك" class="nav__logo-img">
+          <span>معدتك</span>
+        </a>
+        <p class="footer__tagline">معداتك. مشروعك. نجاحك.</p>
+      </div>
+      <div class="footer__social">
+        <a href="#" class="footer__social-link" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="footer__social-link" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="footer__social-link" aria-label="انستغرام"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="footer__social-link" aria-label="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <p class="footer__copy">
+        &copy; <span id="year"></span> معدتك. All Rights Reserved &copy; Designed by <a href="http://www.qeematech.net/"
+          rel="dofollow" style="color: var(--primary); font-weight: 700;"> Qeematech </a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
