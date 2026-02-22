@@ -1,12 +1,12 @@
 /**
- * معدتك - Landing Page Scripts
+ * المعدات الثقيله - Landing Page Scripts
  * Theme, AOS, Vanilla-tilt, Three.js Hero 3D, Book Equipment modal
  */
 
 (function () {
   'use strict';
 
-  const THEME_KEY = 'maedatk-theme';
+  const THEME_KEY = 'heavy-equip-theme';
   const THEME_DARK = 'dark';
   const THEME_LIGHT = 'light';
 
