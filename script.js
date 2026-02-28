@@ -47,7 +47,8 @@
     const links = document.getElementById('navLinks');
     if (!toggle || !links) return;
 
-    toggle.addEventListener('click', function () {
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
       links.classList.toggle('is-open');
       const isOpen = links.classList.contains('is-open');
       toggle.setAttribute('aria-label', isOpen ? 'إغلاق القائمة' : 'فتح القائمة');

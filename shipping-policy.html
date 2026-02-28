@@ -21,18 +21,20 @@
 </head>
 
 <body>
-  <!-- ========== Navigation ========== -->
+  <!-- ========== Navigation (مطابق للصفحة الرئيسية) ========== -->
   <header class="nav" id="nav">
     <div class="nav__container">
       <a href="index.html" class="nav__logo">
-        <img src="img/logo.png" alt="Heavy Ride" class="nav__logo-img">
-        <span>Heavy Ride</span>
+        <img src="img/logo.png" alt="المعدات الثقيله - المنصة الأولى لتأجير المعدات" class="nav__logo-img">
+        <span>المعدات الثقيله</span>
       </a>
       <button class="nav__toggle" id="navToggle" aria-label="فتح القائمة">
         <i class="fas fa-bars"></i>
       </button>
       <nav class="nav__links" id="navLinks">
-        <a href="index.html">الرئيسية</a>
+        <a href="index.html#hero">الرئيسية</a>
+        <a href="index.html#benefits">المميزات</a>
+        <a href="index.html#how-it-works">كيف يعمل</a>
         <a href="index.html#about">من نحن</a>
         <a href="index.html#contact">تواصل معنا</a>
         <button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي/النهاري">
@@ -269,7 +271,19 @@
 
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
-    navToggle.addEventListener('click', () => navLinks.classList.toggle('nav__links--open'));
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('is-open');
+      const isOpen = navLinks.classList.contains('is-open');
+      navToggle.setAttribute('aria-label', isOpen ? 'إغلاق القائمة' : 'فتح القائمة');
+      navToggle.querySelector('i').className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('is-open');
+        navToggle.querySelector('i').className = 'fas fa-bars';
+        navToggle.setAttribute('aria-label', 'فتح القائمة');
+      });
+    });
 
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
