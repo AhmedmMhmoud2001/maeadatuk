@@ -326,11 +326,14 @@ img {
    ============================================================ */
 .hero {
   position: relative;
+  width: 100%;
+  max-width: 100vw;
   min-height: 100vh;
   display: flex;
   align-items: center;
   padding: 6rem 0 5rem;
   overflow: hidden;
+  box-sizing: border-box;
   /* Always dark — the 3D canvas lives here */
   background: radial-gradient(ellipse at 60% 40%, #0d2137 0%, #090f1a 60%, #000508 100%);
 }
@@ -369,11 +372,16 @@ img {
   grid-template-columns: 1fr;
   gap: 3rem;
   align-items: center;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow-x: hidden;
 }
 
 /* ── Content ── */
 .hero__content {
   text-align: center;
+  min-width: 0;
+  max-width: 100%;
 }
 
 /* Pill badge */
@@ -450,6 +458,57 @@ img {
   }
 }
 
+/* Hero: يبقى داخل الصفحة بدون overflow على الموبايل */
+@media (max-width: 767px) {
+  .hero {
+    padding: 5rem 0 4rem;
+  }
+  .hero__container {
+    padding: 0 1rem;
+  }
+  .hero__visual {
+    padding: 1.5rem 1rem;
+    overflow: hidden;
+  }
+}
+
+/* العناوين أصغر شوية على الموبايل */
+@media (max-width: 767px) {
+  .hero__title {
+    font-size: 1.6rem;
+  }
+  .section__title {
+    font-size: 1.45rem;
+  }
+  .section__subtitle {
+    font-size: 0.95rem;
+  }
+  .benefit-card h3 {
+    font-size: 1.25rem;
+  }
+  .step__title {
+    font-size: 1.1rem;
+  }
+  .about__features-title {
+    font-size: 1rem;
+  }
+  .about__pillar h4 {
+    font-size: 0.95rem;
+  }
+  .cta-banner__title {
+    font-size: 1.65rem;
+  }
+  .cta-banner__text {
+    font-size: 1rem;
+  }
+  .modal__title {
+    font-size: 1.3rem;
+  }
+  .footer__col-title {
+    font-size: 0.95rem;
+  }
+}
+
 /* Glass / outline button for hero */
 .btn--glass {
   display: inline-flex;
@@ -520,6 +579,8 @@ img {
   position: relative;
   /* extra space for floating badges */
   padding: 2.5rem 3rem;
+  min-width: 0;
+  max-width: 100%;
 }
 
 /* Ambient glow disc behind the phone */
@@ -2026,6 +2087,14 @@ img {
 .about__tagline i {
   font-size: 1.25rem;
   opacity: 0.7;
+}
+
+/* Mobile: من نحن + ماذا نقدم — ظاهر من أول التحميل (بدون انتظار AOS) */
+@media (max-width: 767px) {
+  .about [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* ============================================
