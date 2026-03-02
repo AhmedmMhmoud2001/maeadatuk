@@ -1827,6 +1827,7 @@ img {
     transform: none;
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
     gap: 1.5rem;
   }
 

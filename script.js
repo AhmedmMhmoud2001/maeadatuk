@@ -44,22 +44,34 @@
   // ---------- Mobile Nav ----------
   function initNav() {
     const toggle = document.getElementById('navToggle');
-    const links = document.getElementById('navLinks');
-    if (!toggle || !links) return;
+    const linksEl = document.getElementById('navLinks');
+    if (!toggle || !linksEl) return;
 
     toggle.addEventListener('click', function (e) {
       e.preventDefault();
-      links.classList.toggle('is-open');
-      const isOpen = links.classList.contains('is-open');
+      linksEl.classList.toggle('is-open');
+      const isOpen = linksEl.classList.contains('is-open');
       toggle.setAttribute('aria-label', isOpen ? 'إغلاق القائمة' : 'فتح القائمة');
       toggle.querySelector('i').className = isOpen ? 'fas fa-times' : 'fas fa-bars';
     });
 
-    links.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        links.classList.remove('is-open');
+    linksEl.querySelectorAll('a').forEach(function (anchor) {
+      anchor.addEventListener('click', function (e) {
+        var href = anchor.getAttribute('href');
+        if (!href) return;
+        linksEl.classList.remove('is-open');
         toggle.querySelector('i').className = 'fas fa-bars';
         toggle.setAttribute('aria-label', 'فتح القائمة');
+        // روابط نفس الصفحة (#section): نمرّر يدوياً لضمان التمرير
+        if (href.indexOf('#') === 0) {
+          var id = href.slice(1);
+          var target = document.getElementById(id);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+        // روابط لصفحة أخرى (مثل index.html#hero) تُترك للسلوك الافتراضي
       });
     });
   }
